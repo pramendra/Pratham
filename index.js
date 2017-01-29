@@ -98,19 +98,40 @@ export default class Pratham extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <ScrollView>
         <ParallaxScrollView
               backgroundColor="blue"
               contentBackgroundColor="pink"
-              parallaxHeaderHeight={300}
+              parallaxHeaderHeight={100}
+              renderStickyHeader={() => (
+                <View key="sticky-header" style={styles.stickySection}>
+                  <Text style={styles.stickySectionText}>Rich Hickey Talks</Text>
+                </View>
+              )}
+              parallaxHeaderHeight={ 320 }
+
               renderForeground={() => (
                <View style={{ height: 300, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                   <Text>Hello World!</Text>
                 </View>
               )}>
               <View style={{ height: 500 }}>
-                <Text>Scroll me</Text>
+                <Button title="Codepush Sync" onPress={() => this.codePushSync()} />
+
+                <ListView
+                  enableEmptySections
+                  pageSize={4}
+                  onEndReachedThreshold={10}
+                  dataSource={this.state.dataSource}
+                  renderRow={item => <Text style={{margin: 10, padding: 20, backgroundColor: 'red'}}>pkg</Text>}
+                  onEndReached={() => console.log(111)}
+                  renderScrollComponent={props => <ScrollView {...props} />}
+
+                />
               </View>
             </ParallaxScrollView>
+        </ScrollView>
+
       </View>
     );
   }
