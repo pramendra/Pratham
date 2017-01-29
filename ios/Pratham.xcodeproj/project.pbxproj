@@ -25,6 +25,8 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		1E6EDAE2948E44B29E9EC8F2 /* libRNAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 806E83C09DB94ABAB39ADC4B /* libRNAnalytics.a */; };
 		B94B584060D3449F8CDA8122 /* MobileCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9A5E46E2C95448292A2553E /* MobileCenter-Config.plist */; };
+		D9314DDE053E4C178D4E75C3 /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C546F6FEEF4B4C82E15F27 /* libCodePush.a */; };
+		7753BA0441C5483C9F441C42 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300AECFA81C48CEAA6F6033 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +240,9 @@
 		394C262AB4FD4D59B491177A /* RNAnalytics.xcodeproj */ = {isa = PBXFileReference; name = "RNAnalytics.xcodeproj"; path = "../node_modules/mobile-center-analytics/ios/RNAnalytics.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		806E83C09DB94ABAB39ADC4B /* libRNAnalytics.a */ = {isa = PBXFileReference; name = "libRNAnalytics.a"; path = "libRNAnalytics.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		E9A5E46E2C95448292A2553E /* MobileCenter-Config.plist */ = {isa = PBXFileReference; name = "MobileCenter-Config.plist"; path = "Pratham/MobileCenter-Config.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
+		21752B28CD9F41C993871B96 /* CodePush.xcodeproj */ = {isa = PBXFileReference; name = "CodePush.xcodeproj"; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		40C546F6FEEF4B4C82E15F27 /* libCodePush.a */ = {isa = PBXFileReference; name = "libCodePush.a"; path = "libCodePush.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		9300AECFA81C48CEAA6F6033 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +270,8 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				1E6EDAE2948E44B29E9EC8F2 /* libRNAnalytics.a in Frameworks */,
+				D9314DDE053E4C178D4E75C3 /* libCodePush.a in Frameworks */,
+				7753BA0441C5483C9F441C42 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +417,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				394C262AB4FD4D59B491177A /* RNAnalytics.xcodeproj */,
+				21752B28CD9F41C993871B96 /* CodePush.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -431,6 +439,7 @@
 				00E356EF1AD99517003FC87E /* PrathamTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				E9A5E46E2C95448292A2553E /* MobileCenter-Config.plist */,
+				965C1950BC2A40E2B4FA1027 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -443,6 +452,15 @@
 				00E356EE1AD99517003FC87E /* PrathamTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		965C1950BC2A40E2B4FA1027 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9300AECFA81C48CEAA6F6033 /* libz.tbd */,
+			);
+			name = Frameworks;
+			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -836,6 +854,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -852,6 +871,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pratham.app/Pratham";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};

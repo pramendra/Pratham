@@ -10,7 +10,8 @@
     "mobile-center-analytics": "^0.1.5",
     "mobile-center-crashes": "^0.1.5",
     "react": "~15.4.0-rc.4",
-    "react-native": "0.40.0"
+    "react-native": "0.40.0",
+    "react-native-code-push": "^1.17.0-beta"
   },
   "devDependencies": {
     "babel-jest": "18.0.0",

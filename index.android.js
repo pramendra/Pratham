@@ -9,10 +9,33 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
+import CodePush from 'react-native-code-push';
 
 export default class Pratham extends Component {
+
+  constructor(props){
+    super(props){
+      this.state = {logs: []};
+    }
+  }
+
+
+  codePushSync(){
+    CodePush.sync({
+      installMode: CodePush.InstallMode.IMMEDIATE,
+      updateDialog: true,
+    }, (status) => {
+      for (var key in CodePush.SyncStatus){
+        if (status === CodePush.SyncStatus[key]){
+          this.setState({logs: [...this.state.logs, key.replace(/_/g, '')]})
+          break;
+        }
+      }
+    });
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -26,6 +49,8 @@ export default class Pratham extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
+        <Button onPress={() => this.codePushSync}>code push</Button>
+        {this.state.logs.map((log, i) => <Text key={i}>{log}</Text>)}
       </View>
     );
   }
