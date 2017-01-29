@@ -1,0 +1,103 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  Button
+} from 'react-native';
+
+import Analytics from 'mobile-center-analytics';
+import Crashes from 'mobile-center-crashes';
+import CodePush from 'react-native-code-push';
+
+export default class RNDemoApp extends Component {
+  sendEvent() {
+    Analytics.trackEvent('My Custom Event', {
+      prop1: 'Custom Property',
+      timeStamp: new Date().toISOString()
+    });
+  }
+
+  nativeCrash() {
+    Crashes.generateTestCrash();
+  }
+
+  jsCrash() {
+    this.fun1();
+  }
+
+  fun1() {
+    this.fun2();
+  }
+
+  fun2() {
+    this.fun3();
+  }
+
+  fun3() {
+    throw new Error('My Custom Exception');
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = { logs: [] };
+  }
+
+  codePushSync() {
+    this.setState({ logs: ['Sync started at ' + new Date()] });
+    CodePush.sync({
+      installMode: CodePush.InstallMode.IMMEDIATE,
+      updateDialog: true
+    }, (status) => {
+      for (var key in CodePush.SyncStatus) {
+        if (status === CodePush.SyncStatus[key]) {
+          this.setState({ logs: [...this.state.logs, key.replace(/_/g, '')] });
+          break;
+        }
+      }
+    });
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Button title="Send Event" onPress={() => this.sendEvent()} />
+        <Button title="Native Crash" onPress={() => this.nativeCrash()} />
+        <Button title="JS Crash" onPress={() => this.jsCrash()} />
+        <Button title="Codepush Sync" onPress={() => this.codePushSync()} />
+        {this.state.logs.map((log, i) => <Text key={i}>{log}</Text>)}
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});
+
+AppRegistry.registerComponent('RNDemoApp', () => RNDemoApp);
