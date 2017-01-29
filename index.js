@@ -14,6 +14,8 @@ import {
   Button,
   ListView,
 } from 'react-native';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
+
 
 import Analytics from 'mobile-center-analytics';
 import Crashes from 'mobile-center-crashes';
@@ -73,29 +75,42 @@ export default class Pratham extends Component {
     });
   }
 
+  // <Text style={styles.welcome}>
+  //   Welcome to React Native!
+  // </Text>
+  // <Button title="Send Event" onPress={() => this.sendEvent()} />
+  // <Button title="Native Crash" onPress={() => this.nativeCrash()} />
+  // <Button title="JS Crash" onPress={() => this.jsCrash()} />
+  // <Button title="Codepush Sync" onPress={() => this.codePushSync()} />
+  // {this.state.logs.map((log, i) => <Text key={i}>{log}</Text>)}
+  // <ScrollView>
+  //   <ListView
+  //     enableEmptySections
+  //     dataSource={this.state.dataSource}
+  //     renderRow={item => <Text style={{margin: 10, padding: 20, backgroundColor: 'red'}}>pkg</Text>}
+  //     onEndReached={() => console.log(111)}
+  //     renderScrollComponent={props => <ScrollView {...props} />}
+  //
+  //   />
+  // </ScrollView>
+
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Button title="Send Event" onPress={() => this.sendEvent()} />
-        <Button title="Native Crash" onPress={() => this.nativeCrash()} />
-        <Button title="JS Crash" onPress={() => this.jsCrash()} />
-        <Button title="Codepush Sync" onPress={() => this.codePushSync()} />
-        {this.state.logs.map((log, i) => <Text key={i}>{log}</Text>)}
-        <ScrollView>
-        <ScrollView>
-          <ListView
-            enableEmptySections
-            dataSource={this.state.dataSource}
-            renderRow={item => <Text style={{margin: 10, padding: 20, backgroundColor: 'red'}}>pkg</Text>}
-            onEndReached={() => console.log(111)}
-            renderScrollComponent={props => <ScrollView {...props} />}
-
-          />
-        </ScrollView>
-        </ScrollView>
+        <ParallaxScrollView
+              backgroundColor="blue"
+              contentBackgroundColor="pink"
+              parallaxHeaderHeight={300}
+              renderForeground={() => (
+               <View style={{ height: 300, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                  <Text>Hello World!</Text>
+                </View>
+              )}>
+              <View style={{ height: 500 }}>
+                <Text>Scroll me</Text>
+              </View>
+            </ParallaxScrollView>
       </View>
     );
   }
@@ -104,20 +119,10 @@ export default class Pratham extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // backgroundColor: '#F5FCFF',
+  }
 });
 
 AppRegistry.registerComponent('Pratham', () => Pratham);
