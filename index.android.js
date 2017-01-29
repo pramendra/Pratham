@@ -48,6 +48,7 @@ export default class Pratham extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
+        <Button title="test"/>
         <Button title={"code push"} onPress={() => this.codePushSync}/>
         {this.state.logs.map((log, i) => <Text key={i}>{log}</Text>)}
       </View>
