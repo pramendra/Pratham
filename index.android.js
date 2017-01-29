@@ -17,9 +17,8 @@ import CodePush from 'react-native-code-push';
 export default class Pratham extends Component {
 
   constructor(props){
-    super(props){
-      this.state = {logs: []};
-    }
+    super(props);
+    this.state = {logs: []};
   }
 
 
@@ -49,7 +48,7 @@ export default class Pratham extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
-        <Button onPress={() => this.codePushSync}>code push</Button>
+        <Button title={"code push"} onPress={() => this.codePushSync}/>
         {this.state.logs.map((log, i) => <Text key={i}>{log}</Text>)}
       </View>
     );
