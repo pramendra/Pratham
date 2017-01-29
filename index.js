@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  ListView,
 } from 'react-native';
 
 import Analytics from 'mobile-center-analytics';
@@ -19,7 +20,7 @@ import CodePush from 'react-native-code-push';
 
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
-export default class RNDemoApp extends Component {
+export default class Pratham extends Component {
   sendEvent() {
     Analytics.trackEvent('My Custom Event', {
       prop1: 'Custom Property',
@@ -114,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('RNDemoApp', () => RNDemoApp);
+AppRegistry.registerComponent('Pratham', () => Pratham);
