@@ -127,6 +127,7 @@ android {
 }
 
 dependencies {
+    compile project(':mobile-center-crashes')
     compile project(':react-native-code-push')
     compile project(':mobile-center-analytics')
     compile fileTree(dir: "libs", include: ["*.jar"])

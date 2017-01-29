@@ -17,6 +17,8 @@ import Analytics from 'mobile-center-analytics';
 import Crashes from 'mobile-center-crashes';
 import CodePush from 'react-native-code-push';
 
+const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+
 export default class RNDemoApp extends Component {
   sendEvent() {
     Analytics.trackEvent('My Custom Event', {
@@ -47,7 +49,11 @@ export default class RNDemoApp extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { logs: [] };
+    this.state = {
+      logs: [],
+      refreshing: false,
+      dataSource: ds.cloneWithRows([1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]),
+    };
   }
 
   codePushSync() {
@@ -76,6 +82,14 @@ export default class RNDemoApp extends Component {
         <Button title="JS Crash" onPress={() => this.jsCrash()} />
         <Button title="Codepush Sync" onPress={() => this.codePushSync()} />
         {this.state.logs.map((log, i) => <Text key={i}>{log}</Text>)}
+
+        <ListView
+          enableEmptySections
+          dataSource={this.state.dataSource}
+          renderRow={item => <Text style={{margin: 10, padding: 20, backgroundColor: 'red'}}>ddd</Text>}
+          onEndReached={() => console.log(111)}
+        />
+
       </View>
     );
   }
