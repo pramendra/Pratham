@@ -10,6 +10,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   Button,
   ListView,
 } from 'react-native';
@@ -83,14 +84,18 @@ export default class Pratham extends Component {
         <Button title="JS Crash" onPress={() => this.jsCrash()} />
         <Button title="Codepush Sync" onPress={() => this.codePushSync()} />
         {this.state.logs.map((log, i) => <Text key={i}>{log}</Text>)}
+        <ScrollView>
+        <ScrollView>
+          <ListView
+            enableEmptySections
+            dataSource={this.state.dataSource}
+            renderRow={item => <Text style={{margin: 10, padding: 20, backgroundColor: 'red'}}>pkg</Text>}
+            onEndReached={() => console.log(111)}
+            renderScrollComponent={props => <ScrollView {...props} />}
 
-        <ListView
-          enableEmptySections
-          dataSource={this.state.dataSource}
-          renderRow={item => <Text style={{margin: 10, padding: 20, backgroundColor: 'red'}}>ddd</Text>}
-          onEndReached={() => console.log(111)}
-        />
-
+          />
+        </ScrollView>
+        </ScrollView>
       </View>
     );
   }
