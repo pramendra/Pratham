@@ -23,6 +23,7 @@ export default class Pratham extends Component {
 
 
   codePushSync(){
+    this.setState({logs: ["Sync Started at: " + new Date()]})
     CodePush.sync({
       installMode: CodePush.InstallMode.IMMEDIATE,
       updateDialog: true,
@@ -36,6 +37,7 @@ export default class Pratham extends Component {
     });
   }
   render() {
+    console.log(this.state.logs);
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -48,9 +50,8 @@ export default class Pratham extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
-        <Button title="test1"/>
-        <Button title="test"/>
-        <Button title={"code push"} onPress={() => this.codePushSync}/>
+        <Text>test</Text>
+        <Button title={"code push"} onPress={() => console.log(222)}/>
         {this.state.logs.map((log, i) => <Text key={i}>{log}</Text>)}
       </View>
     );
